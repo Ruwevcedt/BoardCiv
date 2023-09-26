@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>facade</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.1.0/anime.min.js"></script>
+</head>
+<body>
+<div class="screen">
+    <div class="card_sliding_pad">
+        {% for _id in range(70) %}
+            <p class="card" id="{{ _id }}">&#x1F0A0;</p>
+        {% endfor %}
+    </div>
+    <div class="game_title">
+        <h1 class="game_title_text">
+            BoardCiv
+        </h1>
+    </div>
+    <div class="notification">
+        <h3 class="notification_text">
+            welcome, {{ session['id'] }}
+        </h3>
+        <br>
+        <h3 class="notification_text">
+            click anywhere to proceed
+        </h3>
+    </div>
+</div>
+</body>
+<style>
+    body {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        background: black;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+    .screen {
+        margin: 0;
+        height: inherit;
+        width: inherit;
+    }
+
+    .card_sliding_pad {
+        margin: 0;
+        height: inherit;
+        width: inherit;
+        z-index: 1;
+    }
+
+    .card {
+        margin: 0;
+        position: fixed;
+        color: silver;
+        opacity: 0;
+    }
+
+    .game_title {
+        margin: 0;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+
+    .game_title_text {
+        margin: 0;
+        color: silver;
+    }
+
+    .notification {
+        margin: 0;
+        position: fixed;
+        top: 80%;
+        left: 75%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+
+    .notification_text {
+        margin: 0;
+        color: silver;
+    }
+</style>
+<script>
+    for (var _id = 0; _id < 70; _id++) {
+        let random_top = (Math.random() * 100).toString() + "%";
+        let random_left = (Math.random() * 100).toString() + "%";
+
+        document.getElementById(_id).style.cssText = "top: " + random_top + "; left: " + random_left;
+    }
+
+    var facade_anime = anime.timeline({})
+    let anime_duration = 7000;
+    facade_anime.add({
+        targets: '.card',
+        translateX: function () {
+            return anime.random(-1500, 1500);
+        },
+        translateY: function () {
+            return anime.random(-1500, 1500);
+        },
+        rotate: function () {
+            return anime.random(-720, 720);
+        },
+        scale: function () {
+            return anime.random(0, 2)
+        },
+        easing: 'linear',
+        duration: anime_duration
+    }, 0)
+    facade_anime.add({
+        targets: '.card',
+        opacity: 1,
+        easing: 'linear',
+        duration: anime_duration * 0.3
+    }, 0);
+    facade_anime.add({
+        targets: '.card',
+        opacity: 0,
+        easing: 'linear',
+        duration: anime_duration * 0.7
+    }, anime_duration * 0.3);
+    facade_anime.add({
+        targets: '.game_title',
+        opacity: 1,
+        easing: 'linear',
+        duration: 1000
+    }, anime_duration * 0.75);
+    facade_anime.add({
+        targets: '.notification',
+        opacity: 1,
+        duration: 500,
+        easing: 'linear'
+    }, anime_duration * 0.9)
+
+    window.addEventListener("click", function () {
+        location.href = "http://127.0.0.1:5000/hall";
+    })
+</script>
+</html>

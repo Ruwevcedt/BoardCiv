@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>room</title>
+</head>
+<body>
+<div class="room">
+    <p class="host_text">HOST</p>
+    <p class="host_id">{{ room.host }}</p>
+    <br>
+    <p class="player_text">PLAYER</p>
+    {% for _player in room.players %}
+        <p class="players_id">{{ _player }}</p>
+    {% endfor %}
+    <br>
+    <p class="observer_text">OBSERVER</p>
+    {% for _observer in room.observers %}
+        <p class="observers_id">{{ _observer }}</p>
+    {% endfor %}
+</div>
+</body>
+</html>
