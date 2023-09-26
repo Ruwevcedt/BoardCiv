@@ -71,7 +71,7 @@ def room(host_session_id: float):
         room_by_host_session_id = Room.Room(host_session_id)
         games.append(room_by_host_session_id)
     else:
-        return redirect('/hall') # todo: 무조건 /로 가버리는디 왜이란지 몰루...밋
+        return redirect('/hall') # todo: 무조건 /로 가버리는디 왜이란지 몰루...
     return render_template('room.html', room=room_by_host_session_id)
 
 
