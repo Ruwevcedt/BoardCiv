@@ -1,29 +1,43 @@
 class Suit:
     suit: str
 
-    def __init__(self, suit: str):
+    def __init__(
+            self,
+            suit: str
+            ):
         self.suit = suit
 
-    def __str__(self):
+    def __str__(
+            self
+            ):
         return self.suit
 
 
 class Letter:
     letter: str
 
-    def __init__(self, letter: str):
+    def __init__(
+            self,
+            letter: str
+            ):
         self.letter = letter
 
-    def __str__(self):
+    def __str__(
+            self
+            ):
         return self.letter
 
 
-ALL_SUITS: [Suit] = [Suit(suit=x) for x in [
-    'spade', 'heart', 'club', 'diamond', 'none'
-]]
-ALL_LETTERS: [Letter] = [Letter(letter=x) for x in [
-    'Z', 'A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'
-]]
+ALL_SUITS: [Suit] = [Suit(
+    suit=x
+    ) for x in [
+                             'spade', 'heart', 'club', 'diamond', 'none'
+                             ]]
+ALL_LETTERS: [Letter] = [Letter(
+    letter=x
+    ) for x in [
+                                 'Z', 'A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'
+                                 ]]
 
 
 class Card:
@@ -33,26 +47,47 @@ class Card:
     coded_suit: int
     coded_letter: int
 
-    def __init__(self, suit: Suit, letter: Letter):
+    def __init__(
+            self,
+            suit: Suit,
+            letter: Letter
+            ):
         self.suit = suit
         self.letter = letter
 
-        self.coded_suit = ALL_SUITS.index(self.suit)
-        self.coded_letter = ALL_LETTERS.index(self.letter)
+        self.coded_suit = ALL_SUITS.index(
+            self.suit
+            )
+        self.coded_letter = ALL_LETTERS.index(
+            self.letter
+            )
 
-    def __repr__(self):
+    def __repr__(
+            self
+            ):
         return f"\t({self.suit} \t{self.letter})\n"
 
 
 ALL_CARDS: [Card] = [
-                        Card(suit=_suit, letter=_letter) for _suit in ALL_SUITS[:-1] for _letter in ALL_LETTERS[1:-1]
-                    ] + [
-                        Card(suit=ALL_SUITS[-1], letter=ALL_LETTERS[0])
-                    ] * 2 + [
-                        Card(suit=_suit, letter=ALL_LETTERS[-1]) for _suit in ALL_SUITS[:-1]
-                    ]
+                            Card(
+                                suit=_suit,
+                                letter=_letter
+                                ) for _suit in ALL_SUITS[:-1] for _letter in ALL_LETTERS[1:-1]
+                            ] + [
+                            Card(
+                                suit=ALL_SUITS[-1],
+                                letter=ALL_LETTERS[0]
+                                )
+                            ] * 2 + [
+                            Card(
+                                suit=_suit,
+                                letter=ALL_LETTERS[-1]
+                                ) for _suit in ALL_SUITS[:-1]
+                            ]
 
-print(ALL_CARDS)
+print(
+    ALL_CARDS
+    )
 '''
 [	(spade 	A)
 , 	(spade 	2)

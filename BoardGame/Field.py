@@ -1,6 +1,10 @@
 import copy
 
-from Card import Suit, ALL_SUITS, ALL_CARDS
+from Card import (
+    Suit,
+    ALL_SUITS,
+    ALL_CARDS,
+    )
 
 
 class Nation:
@@ -12,7 +16,10 @@ class Nation:
     army: list
     people: list
 
-    def __init__(self, suit: Suit):
+    def __init__(
+            self,
+            suit: Suit
+            ):
         self.suit = suit
 
         self.king = []
@@ -34,7 +41,11 @@ class BattleField:
     defensive_main: list
     defensive_right: list
 
-    def __init__(self, offensive_suit: Suit, defensive_suit: Suit):
+    def __init__(
+            self,
+            offensive_suit: Suit,
+            defensive_suit: Suit
+            ):
         self.offensive_suit = offensive_suit
         self.defensive_suit = defensive_suit
 
@@ -54,20 +65,45 @@ class Nature:
 
     war: list
 
-    def __init__(self, suit: Suit = ALL_SUITS[0]):
+    def __init__(
+            self,
+            suit: Suit = ALL_SUITS[0]
+            ):
         self.suit = suit
-        self.deck = copy.copy(ALL_CARDS)
+        self.deck = copy.copy(
+            ALL_CARDS
+            )
         self.war = []
 
 
-def put_cards(to_field: list, cards: list):
-    to_field.extend(cards)
+def put_cards(
+        to_field: list,
+        cards: list
+        ):
+    to_field.extend(
+        cards
+        )
 
 
-def pop_cards(from_field: list, cards: list):
-    [from_field.remove(_card) for _card in cards]
+def pop_cards(
+        from_field: list,
+        cards: list
+        ):
+    [from_field.remove(
+        _card
+        ) for _card in cards]
     return cards
 
 
-def move_cards(from_field: list, to_field: list, cards: list):
-    put_cards(to_field=to_field, cards=pop_cards(from_field=from_field, cards=cards))
+def move_cards(
+        from_field: list,
+        to_field: list,
+        cards: list
+        ):
+    put_cards(
+        to_field=to_field,
+        cards=pop_cards(
+            from_field=from_field,
+            cards=cards
+            )
+        )
