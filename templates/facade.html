@@ -6,6 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.1.0/anime.min.js"></script>
 </head>
 <body>
+<iframe src="static/bgm/smog.wav" allow="autoplay" style="display:none"></iframe>
 <div class="screen">
     <div class="card_sliding_pad">
         {% for _id in range(70) %}
@@ -95,7 +96,7 @@
     }
 
     var facade_anime = anime.timeline({})
-    let anime_duration = 7000;
+    let anime_duration = 10000;
     facade_anime.add({
         targets: '.card',
         translateX: function () {
@@ -136,7 +137,7 @@
         opacity: 1,
         duration: 500,
         easing: 'linear'
-    }, anime_duration * 0.9)
+    }, anime_duration * 0.85)
 
     window.addEventListener("click", function () {
         location.href = "http://127.0.0.1:5000/hall";

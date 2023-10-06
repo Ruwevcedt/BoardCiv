@@ -11,26 +11,27 @@
         <h1>ROOM LIST</h1>
         <a>make your own or join a room by clicking it</a>
     </div>
-    <div class="make_new_room" onclick="location.href='http://127.0.0.1:5000/room/{{ session['id'] }}'" style="cursor: pointer">
+    <div class="make_new_room" onclick="location.href='http://127.0.0.1:5000/room/{{ session['id'] }}'"
+         style="cursor: pointer">
         <h3>host a game</h3>
     </div>
     <div class="room_list">
         {% for _room in room_list %}
-            <div class="room" onclick="location.href='http://127.0.0.1:5000/room/{{ _room.host }}'"
-                 style="cursor: pointer">
-                <p class="host_text">HOST</p>
-                <p class="host_id">{{ _room.host }}</p>
-                <br>
-                <p class="player_text">PLAYER</p>
-                {% for _player in _room.players %}
-                    <p class="players_id">{{ _player }}</p>
-                {% endfor %}
-                <br>
-                <p class="observer_text">OBSERVER</p>
-                {% for _observer in _room.observers %}
-                    <p class="observers_id">{{ _observer }}</p>
-                {% endfor %}
-            </div>
+        <div class="room" onclick="location.href='http://127.0.0.1:5000/room/{{ _room.host }}'"
+             style="cursor: pointer">
+            <p class="host_text">HOST</p>
+            <p class="host_id">{{ _room.host }}</p>
+            <br>
+            <p class="player_text">PLAYER</p>
+            {% for _player in _room.players %}
+            <p class="players_id">{{ _player }}</p>
+            {% endfor %}
+            <br>
+            <p class="observer_text">OBSERVER</p>
+            {% for _observer in _room.observers %}
+            <p class="observers_id">{{ _observer }}</p>
+            {% endfor %}
+        </div>
         {% endfor %}
     </div>
 </div>
